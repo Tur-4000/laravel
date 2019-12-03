@@ -3,6 +3,7 @@
 /public/storage
 /public/build
 /storage/*.key
+/storage/docker
 /vendor
 /.idea
 _ide_helper.php
