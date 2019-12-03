@@ -83,6 +83,10 @@
     </header>
     <main class="app-content py-3">
         <div class="container">
+            @yield('breadcrumbs')
+
+            @include('layouts.includes.flash')
+
             @yield('content')
         </div>
     </main>
