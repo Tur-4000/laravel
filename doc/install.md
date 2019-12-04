@@ -6,7 +6,12 @@ composer create-project --prefer-dist laravel/laravel blog
 
 ## Дополнительные пакеты
 ```
-composer require laravelcollective/html jenssegers/date predis/predis laravel/ui davejamesmiller/laravel-breadcrumbs:5.x
+composer require laravelcollective/html
+composer require laravel/ui
+composer require jenssegers/date
+composer require predis/predis
+composer require davejamesmiller/laravel-breadcrumbs:5.x
+composer require laracasts/flash
 ```
 
 **jenssegers/date**
@@ -21,6 +26,15 @@ config/app.php добавить:
 ```
 
 **davejamesmiller/laravel-breadcrumbs**
+
+Скопировать конфиг:
+```
+php artisan vendor:publish --tag=breadcrumbs-config
+```
+Then open config/breadcrumbs.php and edit this line:
+```
+'view' => 'breadcrumbs::bootstrap4',
+```
 
 Create a file called routes/breadcrumbs.php that looks like this:
 ```
@@ -55,13 +69,15 @@ Breadcrumbs::for('post', function ($trail, $post) {
     $trail->push($post->title, route('post', $post->id));
 });
 ```
-Скопировать конфиг:
+
+**Скафолдинг авторизации**
 ```
-php artisan vendor:publish --tag=breadcrumbs-config
+php artisan ui vue --auth
 ```
-Then open config/breadcrumbs.php and edit this line:
+
+**Установить фронт**
 ```
-'view' => 'breadcrumbs::bootstrap4',
+yarn install && yarn run dev
 ```
 
 
@@ -84,12 +100,4 @@ php artisan vendor:publish --provider="Barryvdh\LaravelIdeHelper\IdeHelperServic
 ```
 config/ide-helper.php -- установить параметр `include_fluent` в `true`
 
-**Установить фронт**
-```
-yarn install && yarn run dev
-```
-
-**Скафолдинг авторизации**
-```
-php artisan ui vue --auth
-```
+---
