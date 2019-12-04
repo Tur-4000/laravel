@@ -84,7 +84,7 @@
     <main class="app-content py-3">
         <div class="container">
             @yield('breadcrumbs')
-
+{{--            {{ Breadcrumbs::render('password_reset') }}--}}
             @include('layouts.includes.flash')
 
             @yield('content')
